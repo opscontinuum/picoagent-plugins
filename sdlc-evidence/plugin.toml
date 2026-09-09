@@ -1,0 +1,6 @@
+name = "sdlc-evidence"
+version = "0.1.0"
+entry = "sdlc_evidence:register"
+description = "Probe a repository for the ASD STIG's machine-checkable process artifacts; evidence status, never determinations"
+requires = ["picoagent>=0.1"]
+skills = ["skills"]
