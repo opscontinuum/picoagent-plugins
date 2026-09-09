@@ -1,0 +1,6 @@
+name = "secure-dev-policy"
+version = "0.1.0"
+entry = "secure_dev_policy:register"
+description = "Classify secure-dev obligations correctly (post M-26-05) and check SBOMs against the CISA 2026 minimum elements"
+requires = ["picoagent>=0.1"]
+skills = ["skills"]
