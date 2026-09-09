@@ -15,6 +15,13 @@ outgrew the harness they were examples of; each directory here kept its history
 | [`agents`](agents/) | a child-agent tool (one level deep, gated through the parent's bus) plus delegation, background-run, schedule and automation skills |
 | [`compaction`](compaction/) | context compaction as a `context`-event rewrite |
 | [`complete`](complete/) | shell-style completion for slash commands |
+| [`tdd-guard`](tdd-guard/) | test-integrity mechanisms: confirm weakening edits, prove changed tests run red against pre-change code |
+| [`sdlc-evidence`](sdlc-evidence/) | probe the ASD STIG's machine-checkable process artifacts; evidence status, never determinations |
+| [`secure-dev-policy`](secure-dev-policy/) | classify secure-dev obligations correctly (post M-26-05); check SBOMs against the CISA 2026 minimum elements |
+
+The last three each carry the primary-source research they operationalise under
+`<plugin>/reference/` - what a finding is based on ships with the mechanism that enforces
+it, and each reference states plainly what it verified and what it could not.
 
 ## Installing
 
