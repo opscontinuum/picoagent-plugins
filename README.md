@@ -4,7 +4,8 @@ The plugins that prove picoagent's architecture: each one implements a capabilit
 minimal core deliberately does not ship, through the same registries and events any
 third-party plugin uses. They lived in picoagent's `examples/plugins/` until the examples
 outgrew the harness they were examples of; each directory here kept its history
-(`git subtree split`).
+(`git subtree split`), and later plugins land here directly - the ingestion pair arrived
+from picoagent PRs #16/#17 when the destination changed under them.
 
 | Plugin | Gives the agent |
 |---|---|
@@ -18,8 +19,11 @@ outgrew the harness they were examples of; each directory here kept its history
 | [`tdd-guard`](tdd-guard/) | test-integrity mechanisms: confirm weakening edits, prove changed tests run red against pre-change code |
 | [`sdlc-evidence`](sdlc-evidence/) | probe the ASD STIG's machine-checkable process artifacts; evidence status, never determinations |
 | [`secure-dev-policy`](secure-dev-policy/) | classify secure-dev obligations correctly (post M-26-05); check SBOMs against the CISA 2026 minimum elements |
+| [`doc-ooxml`](doc-ooxml/) | read `.docx`/`.xlsx` as evidence with the standard library alone: quotations verified against headings and cells, template italics told from content, empty sections named |
+| [`doc-pdf`](doc-pdf/) | read a PDF as evidence: verify a quotation resolves to a real page before citing it, pin the edition by hash, distinguish italic guidance from content (needs `pymupdf`, the collection's one `python_dep`) |
 
-The last three each carry the primary-source research they operationalise under
+`tdd-guard`, `sdlc-evidence` and `secure-dev-policy` each carry the primary-source
+research they operationalise under
 `<plugin>/reference/` - what a finding is based on ships with the mechanism that enforces
 it, and each reference states plainly what it verified and what it could not.
 
@@ -46,7 +50,7 @@ a sibling directory named `picoagent`, or point `PICOAGENT_ROOT` at one:
     git clone https://github.com/opscontinuum/picoagent ../picoagent
     python3 -m unittest discover -s tests
 
-212 tests, offline, a few seconds. The fake MCP server lives in `tests/fake_mcp.py`.
+303 tests, offline, a few seconds. The fake MCP server lives in `tests/fake_mcp.py`.
 
 ## Running the live MCP tests
 
