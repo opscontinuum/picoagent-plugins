@@ -1,0 +1,6 @@
+name = "tdd-guard"
+version = "0.1.0"
+entry = "tdd_guard:register"
+description = "Guard test integrity: confirm weakening edits, prove changed tests run red against pre-change code"
+requires = ["picoagent>=0.1"]
+skills = ["skills"]
