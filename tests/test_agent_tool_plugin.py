@@ -8,7 +8,7 @@ import importlib.util, sys, unittest
 from pathlib import Path
 from helpers import CaptureFrontend, ScriptedProvider, call, make_runtime, run, text, ROOT, temp_dir
 from picoagent.core.loop import AgentLoop
-from picoagent.core.tools import ToolContext
+from picoagent.core.tools import BUILTIN_TOOLS, ToolContext
 from picoagent.plugins import loader
 
 PLUGINS = Path(__file__).resolve().parents[1]
@@ -245,11 +245,19 @@ class AgentToolTests(unittest.TestCase):
 
     # ------------------------------------------------------------------ recursion guard
     def test_child_cannot_see_the_agent_tool(self):
+        """The child gets the parent's built-ins and not the tool that spawned it.
+
+        The second assertion is derived from ``BUILTIN_TOOLS`` rather than spelled out. A
+        literal set here is a copy of a list core owns, and it fails the day core gains a tool -
+        which is a true statement about the copy and tells nobody anything about recursion, the
+        thing this test is named for. Derived, it keeps checking what it means: everything the
+        parent had, minus ``agent``.
+        """
         rt = self._rt([[text("done")]])
         self._execute(rt, {"prompt": "look around"})
         offered = {spec.name for spec in self.provider.calls[0]["tools"]}
         self.assertNotIn("agent", offered)
-        self.assertEqual(offered, {"read", "write", "edit", "shell"})
+        self.assertEqual(offered, {tool.name for tool in BUILTIN_TOOLS})
 
     def test_a_narrowed_parent_tool_set_is_inherited_narrowed(self):
         """Plan mode and read-only narrow the parent for a reason; the child stays narrowed."""
