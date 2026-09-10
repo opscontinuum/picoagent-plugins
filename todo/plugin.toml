@@ -1,0 +1,6 @@
+name = "todo"
+version = "0.1.0"
+entry = "todo:register"
+description = "The agent's plan, kept in the session log and put back in front of the model every turn"
+python_deps = []
+requires = ["picoagent>=0.1"]
