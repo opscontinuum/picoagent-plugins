@@ -1,0 +1,6 @@
+name = "history"
+version = "0.1.0"
+entry = "history:register"
+description = "See the session tree and move the branch pointer: /history lists it, /rewind moves it"
+python_deps = []
+requires = ["picoagent>=0.1"]

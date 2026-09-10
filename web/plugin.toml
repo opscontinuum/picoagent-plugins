@@ -1,0 +1,16 @@
+name = "web"
+version = "0.1.0"
+entry = "web:register"
+description = "Fetch a page as readable text, and query a search endpoint you configure - standard library only, with an address policy that refuses loopback and private ranges by default"
+requires = ["picoagent>=0.1"]
+
+# Nothing to install. urllib.request and html.parser are the whole client, which is the same
+# choice core/provider.py makes: a plugin that reaches the network should not also be the reason
+# a user's environment grows a dependency tree they have to audit.
+python_deps = []
+
+# Deliberately NOT `required = true`. This plugin adds a capability; it does not provide a
+# control. A session that starts without it has an agent that cannot reach the network, which is
+# obvious from inside the session the first time the model tries. `required = true` is for a
+# plugin whose absence looks identical to it having allowed something - a gate - and stopping a
+# session because a fetch tool failed to load would be a worse trade than losing the tool.

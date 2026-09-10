@@ -16,6 +16,9 @@ from picoagent PRs #16/#17 when the destination changed under them.
 | [`agents`](agents/) | a child-agent tool (one level deep, gated through the parent's bus) plus delegation, background-run, schedule and automation skills |
 | [`compaction`](compaction/) | context compaction as a `context`-event rewrite |
 | [`complete`](complete/) | shell-style completion for slash commands |
+| [`todo`](todo/) | a task list the model rewrites as it works, kept in the session log so a resumed session picks it up where it left off |
+| [`history`](history/) | `/history` and `/rewind`: continue from an earlier point in the conversation by moving the branch pointer, deleting nothing |
+| [`web`](web/) | `web_fetch` and a `web_search` you point at your own endpoint, behind an address policy that judges the resolved address on every redirect hop |
 | [`tdd-guard`](tdd-guard/) | test-integrity mechanisms: confirm weakening edits, prove changed tests run red against pre-change code |
 | [`sdlc-evidence`](sdlc-evidence/) | probe the ASD STIG's machine-checkable process artifacts; evidence status, never determinations |
 | [`secure-dev-policy`](secure-dev-policy/) | classify secure-dev obligations correctly (post M-26-05); check SBOMs against the CISA 2026 minimum elements |
@@ -50,7 +53,7 @@ a sibling directory named `picoagent`, or point `PICOAGENT_ROOT` at one:
     git clone https://github.com/opscontinuum/picoagent ../picoagent
     python3 -m unittest discover -s tests
 
-303 tests, offline, a few seconds. The fake MCP server lives in `tests/fake_mcp.py`.
+458 tests, offline, a few seconds. The fake MCP server lives in `tests/fake_mcp.py`.
 
 ## Running the live MCP tests
 
